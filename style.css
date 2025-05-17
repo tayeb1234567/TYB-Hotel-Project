@@ -1,0 +1,106 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: linear-gradient(135deg, #1e1e2f, #2b2b45); /* dark, modern gradient */
+  color: #f0f0f0;
+}
+
+.dashboard {
+  background-color: #282c34;
+  color: #ffffff;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+  border-bottom: 2px solid #444;
+}
+
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 30px;
+}
+
+.card-col {
+  flex: 0 0 30%;
+  min-width: 300px;
+}
+
+.card {
+  background: #33354a;
+  color: #f1f1f1;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+}
+
+button {
+  background-color: #4c8bf5;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background-color: #376fd2;
+}
+.card {
+  background-color: rgb(6, 78, 69); /* or your original card color */
+  transition: background-color 0.7s ease; /* smooth transition */
+  /* other existing styles */
+}
+
+.card:hover {
+  background-color: #1c017e; /* for example, a nice gold/yellow */
+  cursor: pointer; /* show pointer on hover */
+}
+button {
+  background-color: #4CAF50; /* green */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #7149ff; 
+  transform: scale(1.05); 
+}
+
+.dashboard {
+  position: relative;
+  padding: 20px;
+}
+
+.user-info {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#logout-btn {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+#viewBookingsBtn{
+    padding: 5px 10px;
+  cursor: pointer;
+}
+

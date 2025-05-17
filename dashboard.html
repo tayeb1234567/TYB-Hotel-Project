@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TAYEB Hotel Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Ensure background image covers card and text is visible */
+    .card {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      position: relative;
+      overflow: hidden;
+      transition: background-color 0.3s ease;
+    }
+    /* Optional: add a dark overlay to improve text readability */
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 10px;
+      z-index: 0;
+    }
+    /* Put text and button above overlay */
+    .card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Bottom bar styling */
+    .footer {
+      background-color: #222;
+      color: #eee;
+      text-align: center;
+      padding: 10px 0;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      font-size: 14px;
+      position: fixed;
+      width: 100%;
+      left: 0;
+      bottom: 0;
+      z-index: 999;
+    }
+
+    /* Padding to avoid content hidden behind fixed footer */
+    body {
+      padding-bottom: 40px; /* height of footer */
+      margin: 0; /* remove default margin */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="dashboard">
+    <h1>Welcome to the TAYEB Hotel Dashboard</h1>
+    <div class="user-info">
+      <span id="user-name"></span>
+      <button id="logout-btn">Logout</button>
+
+      <button id="viewBookingsBtn">Bookings</button>
+    </div>
+    <p>Click on any hotel card to book now.</p>
+  </div>
+
+  <!-- Cards OUTSIDE the dashboard -->
+  <div class="card-grid">
+    <div class="card-col">
+      <div class="card" style="background-image: url('/images/first.jpg');">
+        <h2>Sunset Paradise</h2>
+        <p>Located by the beach, enjoy serene sunsets and luxury rooms.</p>
+        <button>Book Now</button>
+      </div>
+    </div>
+    <div class="card-col">
+      <div class="card" style="background-image: url('/images/2.jpg');">
+        <h2>Mountain Escape</h2>
+        <p>Cozy cabins in the mountains for a peaceful getaway.</p>
+        <button>Book Now</button>
+      </div>
+    </div>
+    <div class="card-col">
+      <div class="card" style="background-image: url('/images/3.jpg');">
+        <h2>City Central</h2>
+        <p>Stay at the heart of the city with easy access to everything.</p>
+        <button>Book Now</button>
+      </div>
+    </div>
+
+    <div class="card-col">
+      <div class="card" style="background-image: url('/images/4.jpg');">
+        <h2>Moonlight Mirage Hotel</h2>
+        <p>Experience magical nights under the stars with luxury amenities.</p>
+        <button>Book Now</button>
+      </div>
+    </div>
+    
+    <div class="card-col">
+      <div class="card" style="background-image: url('/images/5.jpg');">
+        <h2>Azure Haven Resort</h2>
+        <p>Relax in the tranquil blue waters and lush tropical gardens.</p>
+        <button>Book Now</button>
+      </div>
+    </div>
+    
+    <div class="card-col">
+      <div class="card" style="background-image: url('/images/6.jpg');">
+        <h2>The Velvet Horizon</h2>
+        <p>A sophisticated retreat with elegant décor and panoramic views.</p>
+        <button>Book Now</button>
+      </div>
+    </div>
+    
+    <div class="card-col">
+      <div class="card" style="background-image: url('/images/7.jpg');">
+        <h2>Crystal Bay Suites</h2>
+        <p>Modern suites with stunning bay views and first-class service.</p>
+        <button>Book Now</button>
+      </div>
+    </div>
+    
+    <div class="card-col">
+      <div class="card" style="background-image: url('/images/8.jpg');">
+        <h2>Starlight Nest Inn</h2>
+        <p>Cozy inn offering a peaceful escape surrounded by nature.</p>
+        <button>Book Now</button>
+      </div>
+    </div>
+    
+    <div class="card-col">
+      <div class="card" style="background-image: url('/images/9.jpg');">
+        <h2>Royal Ember Palace</h2>
+        <p>Experience royal treatment in a palace-inspired luxury hotel.</p>
+        <button>Book Now</button>
+      </div>
+    </div>
+    
+    <div class="card-col">
+      <div class="card" style="background-image: url('/images/10.jpg');">
+        <h2>Whispering Pines Lodge</h2>
+        <p>Secluded lodge nestled among towering pine trees for tranquility.</p>
+        <button>Book Now</button>
+      </div>
+    </div>
+    
+    <div class="card-col">
+      <div class="card" style="background-image: url('/images/11.jpg');">
+        <h2>The Golden Lantern</h2>
+        <p>Warm ambiance with rich decor and exquisite dining options.</p>
+        <button>Book Now</button>
+      </div>
+    </div>
+    
+    <div class="card-col">
+      <div class="card" style="background-image: url('/images/12.jpg');">
+        <h2>Ocean Pearl Retreat</h2>
+        <p>A serene coastal resort with private beach access and spa facilities.</p>
+        <button>Book Now</button>
+      </div>
+    </div>
+  </div>
+  
+  <footer class="footer">
+    created by TAYEB EL MERABET
+  </footer>
+
+  <script>
+    document.getElementById("viewBookingsBtn").addEventListener("click", function() {
+      window.location.href = "saves.html";
+    });
+
+    const username = localStorage.getItem('username');
+    const userNameSpan = document.getElementById('user-name');
+    const logoutBtn = document.getElementById('logout-btn');
+
+    logoutBtn.addEventListener('click', () => {
+      localStorage.removeItem('username'); // clear stored username
+      window.location.href = 'index.html'; // redirect to login page (index.html, NOT login.html)
+    });
+
+    if (username) {
+      userNameSpan.textContent = `Hello, ${username}!`;
+    } else {
+      // If no username found, redirect to login page
+      window.location.href = 'index.html';
+    }
+
+    logoutBtn.addEventListener('click', () => {
+      localStorage.removeItem('username'); // clear stored username
+      window.location.href = 'index.html'; // redirect to login page
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const bookButtons = document.querySelectorAll('.card button');
+
+      bookButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const username = localStorage.getItem('username');
+          if (!username) {
+            alert('You must be logged in to book a hotel.');
+            return;
+          }
+
+          const card = this.closest('.card');
+          const hotelName = card.querySelector('h2').innerText;
+          const hotelDesc = card.querySelector('p').innerText;
+          const bgImage = card.style.backgroundImage;
+
+          // Use username-specific key
+          const storageKey = `bookedHotels_${username}`;
+          let savedBookings = JSON.parse(localStorage.getItem(storageKey)) || [];
+
+          if (savedBookings.find(h => h.name === hotelName)) {
+            alert('You already booked this hotel!');
+            return;
+          }
+
+          savedBookings.push({
+            name: hotelName,
+            description: hotelDesc,
+            image: bgImage
+          });
+
+          localStorage.setItem(storageKey, JSON.stringify(savedBookings));
+
+          alert(`You booked "${hotelName}"!`);
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

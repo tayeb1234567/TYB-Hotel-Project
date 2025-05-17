@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Booked Hotels</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .card {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      margin: 10px;
+      position: relative;
+      overflow: hidden;
+      width: 300px;
+      height: 200px;
+      display: inline-block;
+      vertical-align: top;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      z-index: 0;
+    }
+    .card > * {
+      position: relative;
+      z-index: 1;
+    }
+    button.remove-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: red;
+      border: none;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+  <h1>My Booked Hotels</h1>
+  <div id="bookingsContainer"></div>
+
+  <script>
+    const container = document.getElementById('bookingsContainer');
+    const username = localStorage.getItem('username');
+
+    if (!username) {
+      container.innerHTML = "<p>Please log in to see your booked hotels.</p>";
+    } else {
+      const storageKey = `bookedHotels_${username}`;
+      let bookings = JSON.parse(localStorage.getItem(storageKey)) || [];
+
+      if (bookings.length === 0) {
+        container.innerHTML = "<p>You haven't booked any hotels yet.</p>";
+      } else {
+        bookings.forEach((hotel, index) => {
+          const card = document.createElement('div');
+          card.className = 'card';
+          // Correctly apply background image url
+          card.style.backgroundImage = `url('${hotel.image}')`;
+
+          card.innerHTML = `
+            <h2>${hotel.name}</h2>
+            <p>${hotel.description}</p>
+            <button class="remove-btn" data-index="${index}">Remove</button>
+          `;
+
+          container.appendChild(card);
+        });
+
+        container.addEventListener('click', (e) => {
+          if (e.target.classList.contains('remove-btn')) {
+            const idx = e.target.getAttribute('data-index');
+            bookings.splice(idx, 1);
+            localStorage.setItem(storageKey, JSON.stringify(bookings));
+            location.reload();
+          }
+        });
+      }
+    }
+  </script>
+</body>
+</html>
