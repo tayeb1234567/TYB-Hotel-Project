@@ -1,4 +1,4 @@
-## HOW TO USE THIS PROJECT:
+HOW TO USE THIS PROJECT:
 
 
 first open your cmd prompt and paste these two commands on it :  
@@ -13,7 +13,7 @@ then go to http://localhost:8000
 
 and use the website,
 
-## HOW TO CHECK THE DATA OF THE WEBSITE:
+HOW TO CHECK THE DATA OF THE WEBSITE:
 
 
 after submitting the username and password, a file will be automatically created called logs.db that contains the credentials of the website
