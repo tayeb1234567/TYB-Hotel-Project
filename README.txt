@@ -33,7 +33,7 @@ SELECT * FROM bookings;
 
 
 
-to check that data we open the cmd prompt again and type these commands: 
+to check the logs data we open the cmd prompt again and type these commands: 
 
 
 sqlite3 logs.db
