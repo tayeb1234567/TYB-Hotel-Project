@@ -18,6 +18,20 @@ HOW TO CHECK THE DATA OF THE WEBSITE:
 
 after submitting the username and password, a file will be automatically created called logs.db that contains the credentials of the website
 
+
+AFTER SUBMITTING YOUR BOOKINGS, CLICK ON EXPORT JSON BUTTON
+
+to check the bookings database just get back in the terminal and type the following commands :  
+
+
+javac -cp ".;sqlite-jdbc-3.49.1.0.jar" MinimalBookingsToDB.java
+java -cp ".;sqlite-jdbc-3.49.1.0.jar" MinimalBookingsToDB
+sqlite3 bookingcards.db
+sqlite> .tables
+SELECT * FROM bookings;
+
+
+
 to check that data we open the cmd prompt again and type these commands: 
 
 
