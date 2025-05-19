@@ -19,7 +19,8 @@ HOW TO CHECK THE DATA OF THE WEBSITE:
 after submitting the username and password, a file will be automatically created called logs.db that contains the credentials of the website
 
 
-AFTER SUBMITTING YOUR BOOKINGS, CLICK ON EXPORT JSON BUTTON
+AFTER SUBMITTING YOUR BOOKINGS,
+CLICK ON EXPORT JSON BUTTON ( this step is important, and keep the bookings.json file in the Downloads directoy) !!
 
 to check the bookings database just get back in the terminal and type the following commands :  
 
