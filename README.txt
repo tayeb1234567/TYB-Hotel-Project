@@ -27,7 +27,7 @@ to check the bookings database just get back in the terminal and type the follow
 javac -cp ".;sqlite-jdbc-3.49.1.0.jar" MinimalBookingsToDB.java
 java -cp ".;sqlite-jdbc-3.49.1.0.jar" MinimalBookingsToDB
 sqlite3 bookingcards.db
-sqlite> .tables
+.tables
 SELECT * FROM bookings;
 
 
