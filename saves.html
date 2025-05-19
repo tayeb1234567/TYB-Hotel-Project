@@ -44,10 +44,27 @@
       cursor: pointer;
       z-index: 2;
     }
+    #exportBtn {
+      margin: 10px 0 20px 0;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 5px;
+    }
+    #exportBtn:hover {
+      background-color: #0056b3;
+    }
   </style>
 </head>
 <body>
   <h1>My Booked Hotels</h1>
+
+  <!-- Export Button -->
+  <button id="exportBtn">Export Bookings</button>
+
   <div id="bookingsContainer"></div>
 
   <script>
@@ -56,6 +73,7 @@
 
     if (!username) {
       container.innerHTML = "<p>Please log in to see your booked hotels.</p>";
+      document.getElementById('exportBtn').style.display = 'none'; // hide export button if not logged in
     } else {
       const storageKey = `bookedHotels_${username}`;
       let bookings = JSON.parse(localStorage.getItem(storageKey)) || [];
@@ -66,15 +84,12 @@
         bookings.forEach((hotel, index) => {
           const card = document.createElement('div');
           card.className = 'card';
-          // Correctly apply background image url
           card.style.backgroundImage = `url('${hotel.image}')`;
-
           card.innerHTML = `
             <h2>${hotel.name}</h2>
             <p>${hotel.description}</p>
             <button class="remove-btn" data-index="${index}">Remove</button>
           `;
-
           container.appendChild(card);
         });
 
@@ -87,6 +102,18 @@
           }
         });
       }
+
+      // Export bookings button handler
+      document.getElementById('exportBtn').addEventListener('click', () => {
+        const dataStr = JSON.stringify(bookings, null, 2);
+        const blob = new Blob([dataStr], {type: 'application/json'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'bookings.json';
+        a.click();
+        URL.revokeObjectURL(url);
+      });
     }
   </script>
 </body>
